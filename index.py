@@ -1,6 +1,5 @@
 import os
-import time
-from threading import Thread
+import time 
 from flask import Flask, request, render_template
 import cloudinary
 import cloudinary.uploader
@@ -80,13 +79,10 @@ def upload():
     print(response)
     secure_url_json = json.dumps({'secure_url': response['secure_url']})
     return secure_url_json
-
+@app.route('/train_model')
 def schedule_model_training():
-    subprocess.run(['python', 'train_model.py']) 
-    time.sleep(180)  # Sleep for 5 minutes 
+    subprocess.run(['python', 'train_model.py'])  
+    return "Model is successfully trained again"
 
-if __name__ == '__main__':
-    # Run the scheduler in a separate thread
-    Thread(target=schedule_model_training).start()
-    print("The scheduler is restarted on " + str(datetime.now()))
+if __name__ == '__main__': 
     app.run(port=5000, debug=True)
