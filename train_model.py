@@ -6,7 +6,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.ensemble import RandomForestRegressor
 import pickle 
 import os
-from datetime import datetime
+from datetime import datetime 
 crypto = [ 'BTC', 'ETH', 'SOL', 'USDT', 'BNB']
 
 for type in crypto:
